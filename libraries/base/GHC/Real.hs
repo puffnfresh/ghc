@@ -25,11 +25,17 @@ module GHC.Real
      Rational,
 
      (%), (^), (^%^), (^^), (^^%^^), denominator, divZeroError, even,
-     fromIntegral, gcd, gcdInt', gcdWord', infinity, integralEnumFrom,
-     integralEnumFromThen, integralEnumFromThenTo, integralEnumFromTo, lcm,
-     notANumber, numerator, numericEnumFrom, numericEnumFromThen,
-     numericEnumFromThenTo, numericEnumFromTo, odd, overflowError, ratioPrec,
-     ratioPrec1, ratioZeroDenominatorError, realToFrac, reduce, showSigned
+     fromIntegral, gcd, infinity, integralEnumFrom, integralEnumFromThen,
+     integralEnumFromThenTo, integralEnumFromTo, lcm, notANumber, numerator,
+     numericEnumFrom, numericEnumFromThen, numericEnumFromThenTo,
+     numericEnumFromTo, odd, overflowError, ratioPrec, ratioPrec1,
+     ratioZeroDenominatorError, realToFrac, reduce, showSigned
+#ifdef OPTIMISE_INTEGER_GCD_LCM
+     , gcdInt'
+#if MIN_VERSION_integer_gmp(1,0,0)
+     , gcdWord'
+#endif
+#endif
      ) where
 
 import GHC.Base
